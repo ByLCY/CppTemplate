@@ -14,6 +14,11 @@ if (PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
 endif ()
 
 include(cmake/options.cmake)
+# --------------------
+# version.h file
+# --------------------
+message(STATUS "The version.h file is in ${PROJECT_SOURCE_DIR}/include/${INCLUDE_DIR}/version.h")
+configure_file(${PROJECT_SOURCE_DIR}/version.h.in ${PROJECT_SOURCE_DIR}/include/${INCLUDE_DIR}/version.h)
 
 # --------------------
 # source files
@@ -30,6 +35,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 # --------------------
 # enable/disable unittests
 # --------------------
+message(STATUS "Whether the current project compiles unit tests: ${BUILD_TEST}")
 IF (BUILD_TEST)
   add_subdirectory(test)
 endif (BUILD_TEST)
